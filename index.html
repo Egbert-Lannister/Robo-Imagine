@@ -26,6 +26,7 @@
 
 <div class="container">
     <div class="section">
+        <h2>Abstract</h2>
         <p>
             Robot learning aims to control robots to complete tasks across diverse physical embodiments and environments. 
             Mainstream approaches tend to train an end-to-end robot model trained on image-text-encoding of states, which achieve good task-specific performances, but struggle on unseen scenes and tasks. 
@@ -36,6 +37,25 @@
             We enable generating longer videos by applying this model autoregressively using a VLM as task-completion evaluator.Furthermore, we train a visual inverse dynamic model to map the generated videos into end-effector actions. 
             We illustrate that the efficiency of our approach across embodiments and environments and plan to open-source our model on paper acceptance.  
             
+        </p>
+    </div>
+
+    <div>
+        <h3>Robo-image working principle</h3>
+        <img src="img/principle_flow.png" alt="Principle Flow Diagram" />
+        <p>
+            Robo-image is an image-text conditioned, generalized robotic video generation model across different embodiments and tasks.
+        </p>
+    </div>
+
+    <div>
+        <h3>Framework of our Robot-Imagine model</h3>
+        <img src="img/framework.pdf" alt="Framework of our Robot-Imagine model" />
+        <p>
+            Robot-Imagine is a U-Net-based diffusion video generation model, with text instruction and initial image as inputs and outputs generated robotic manipulation videos. 
+            We employ a VLM as task-completion evaluator to generate long-content video. 
+            If VLM feedbacks that task is deemed incomplete, the model continues generating video until the task is fulfilled. 
+            Then the visual inverse dynamic model map the generated guiding video into robot arm 7-DoF actions for task in simulation or real world.
         </p>
     </div>
 
