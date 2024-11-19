@@ -7,7 +7,7 @@
     <meta name="description"
           content="Learning to Render Novel Views from Wide-Baseline Stereo Pairs">
 
-    <title>Learning to Render Novel Views from Wide-Baseline Stereo Pairs</title>
+    <title> Robo-Imagine </title>
     <!-- Bootstrap core CSS -->
     <!--link href="bootstrap.min.css" rel="stylesheet"-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -21,24 +21,21 @@
 <body>
 <div class="jumbotron jumbotron-fluid">
     <div class="container"></div>
-    <h2>Learning to Render Novel Views from<br>Wide-Baseline Stereo Pairs</h2>
+    <h2> Robo-Imagine: An Image-Text Conditioned, Generalized Robotic Video Generation Model Across Embodiments and Tasks </h2>
 </div>
 
 <div class="container">
     <div class="section">
         <p>
-            We introduce a method for novel view synthesis given only a single wide-baseline stereo image pair.
-            In this challenging regime, 3D scene points are regularly observed only once, requiring prior-based reconstruction of scene geometry and appearance.
-
-            We find that existing approaches to novel view synthesis from sparse observations fail due to recovering incorrect 3D geometry and due to the high cost of differentiable rendering that precludes their scaling to large-scale training.
-
-            We take a step towards resolving these shortcomings by formulating a multi-view transformer encoder, proposing an efficient, image-space epipolar line sampling scheme to assemble image features for a target ray, and a lightweight cross-attention-based renderer.
-
-            Our contributions enable training of our method on a large-scale real-world dataset of indoor and outdoor scenes.o
-
-            We demonstrate that our method learns powerful multi-view geometry priors while reducing both rendering time and memory footprint.
-
-            We conduct extensive comparisons on held-out test scenes across two real-world datasets, significantly outperforming prior work on novel view synthesis from sparse image observations and achieving multi-view-consistent novel view synthesis.
+            Robot learning aims to control robots to complete tasks across diverse physical embodiments and environments. 
+            Mainstream approaches tend to train an end-to-end robot model trained on image-text-encoding of states, which achieve good task-specific performances, but struggle on unseen scenes and tasks. 
+            Recently, video generation models provide a new perspective to enable robots to generalize by using videos as an 'imagination' of future actions. 
+            However, the current approach trains a video model on a specific embodiment and specific task, showing poor generalization. 
+            In this paper, we train a generalized robotic video generation model, named Robo-Imagine, conditioned with image and text, to generate visual-semantic-conformity robotic manipulation videos across variant embodiments, backgrounds and tasks. 
+            Our method able to effectively generalize and generate robotic videos on unseen cases, even enabling us to transfer a model trained on real-world video and directly solve tasks in simulation environment. 
+            We enable generating longer videos by applying this model autoregressively using a VLM as task-completion evaluator.Furthermore, we train a visual inverse dynamic model to map the generated videos into end-effector actions. 
+            We illustrate that the efficiency of our approach across embodiments and environments and plan to open-source our model on paper acceptance.  
+            
         </p>
     </div>
 
