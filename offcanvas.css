@@ -118,7 +118,6 @@ h2 {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* 创建两列 */
   grid-gap: 10px;
   /* 设置网格间距 */
   padding: 10px;
@@ -135,7 +134,7 @@ h2 {
 
 
 /* styles.css */
-.container {
+.framework {
   width: 100%;
   max-width: 1200px;
   /* 最大宽度，可根据需要调整 */
@@ -143,19 +142,19 @@ h2 {
   /* 水平居中 */
 }
 
-.container h3 {
+.framework h3 {
   text-align: center;
   /* 标题居中 */
 }
 
-.container img {
+.frameworkimg {
   width: 100%;
   /* 图片宽度设置为100% */
   height: auto;
   /* 图片高度自适应 */
 }
 
-.container p {
+.framework p {
   text-align: center;
   /* 段落居中 */
 }
