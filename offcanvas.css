@@ -158,3 +158,35 @@ h2 {
   text-align: center;
   /* 段落居中 */
 }
+
+.video-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.video-item {
+  width: calc(20% - 10px);
+  /* 每个视频项占据20%的宽度，减去10px的间隔 */
+  margin-bottom: 20px;
+  display: flex;
+  /* 使.video-item成为一个flex容器 */
+  flex-direction: column;
+  /* 子元素垂直排列 */
+  align-items: center;
+  /* 水平居中对齐子元素 */
+}
+
+.video-item video {
+  width: 100%;
+  height: auto;
+  margin-bottom: 5px;
+  /* 为视频和描述之间添加一些间隔 */
+}
+
+.video-description {
+  margin-top: 0;
+  /* 移除顶部外边距，因为我们已经通过flex布局居中对齐 */
+  text-align: center;
+  /* 确保文本在水平方向上居中 */
+}

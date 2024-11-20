@@ -19,6 +19,7 @@
 </head>
 
 <body>
+
     <div class="jumbotron jumbotron-fluid">
         <div class="container"></div>
         <h2> Robo-Imagine: An Image-Text Conditioned, Generalized Robotic Video Generation Model Across Embodiments and
@@ -54,7 +55,8 @@
         <div class="section">
             <h3>Robo-image working principle</h3>
             <hr>
-            <img src="img/principle_flow.png" style="width: 70%; text-align: center;" alt="Principle Flow Diagram" />
+            <img src="img/principle_flow.png" style="width: 70%; display: block; margin: auto;"
+                alt="Principle Flow Diagram" />
             <p>
                 Robo-image is an image-text conditioned, generalized robotic video generation model across different
                 embodiments and tasks.
@@ -64,7 +66,7 @@
         <div class="section">
             <h3>Framework of our Robot-Imagine model</h3>
             <hr>
-            <img src="img/framework.png" style="width: 70%; text-align: center;"
+            <img src="img/framework.png" style="width: 100%; display: block; margin: auto;"
                 alt="Framework of our Robot-Imagine model" />
             <p>
                 Robot-Imagine is a U-Net-based diffusion video generation model, with text instruction and initial image
@@ -81,99 +83,322 @@
         <div class="section">
             <h2>Results</h2>
             <hr>
+            <h3>Robo-Imagine on RT-1 dataset</h3>
+
             <p>
-                First, we show the results of our approach on different embodiments and tasks.
+                We evaluate our model on the RT-1 dataset, which contains 599 robotic manipulation videos with
+                different embodiments and tasks.
             </p>
-            <div class="row align-items-center">
-                <div class="col justify-content-center text-center">
-                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                        <source src="img/Main_5.mp4" type="video/mp4">
+
+            <h4>Seen Tasks Results on RT-1 dataset</h4>
+
+            <div class="video-container">
+                <!-- Video Item 1 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/rt1_seen_pick_rxbar_chocolate.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
                     </video>
+                    <p class="video-description">
+                        pick rxbar chocolate
+                    </p>
                 </div>
-            </div>
-        </div>
 
-        <div class="section">
-            <h2>Indoor Scene Baseline Comparisons</h2>
-            <hr>
-            <p>
-                Next, we illustrate comparisons of our approach with IBRNet, pixelNeRF, GPNR on different indoor scene
-                in Realestate10k.
-            </p>
-            <div class="row align-items-center">
-                <div class="col justify-content-center text-center">
-                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                        <source src="img/Comparisons_1.mp4" type="video/mp4">
+                <!-- Video Item 2 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/rt1_seen_close_top_drawer.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
                     </video>
+                    <p class="video-description">
+                        close top drawer
+                    </p>
                 </div>
-            </div>
-        </div>
 
-
-
-        <div class="grid-container">
-            <div class="grid-item">
-                <img src="img/bridge_pie.png" alt="Image 1">
-            </div>
-            <div class="grid-item">
-                <img src="img/bridge_radar.png" alt="Image 2">
-            </div>
-            <div class="grid-item">
-                <img src="img/rt1_pie.png" alt="Image 3">
-            </div>
-            <div class="grid-item">
-                <img src="img/rt1_radar.png" alt="Image 4">
-            </div>
-        </div>
-
-
-        <div class="section">
-            <h2>Outdoor Scene Baseline Comparisons</h2>
-            <hr>
-            <p>
-                Next, we illustrate comparisons of our approach with IBRNet, pixelNeRF, GPNR on different outdoor scenes
-                in ACID.
-            </p>
-            <div class="row align-items-center">
-                <div class="col justify-content-center text-center">
-                    <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                        <source src="img/acid_comparison.mp4" type="video/mp4">
+                <!-- Video Item 3 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/rt1_seen_knock_water_bottle_over.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
                     </video>
+                    <p class="video-description">
+                        knock water bottle over
+                    </p>
+                </div>
+
+                <!-- Video Item 4 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/rt1_seen_move_sponge_near_apple.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+                        move sponge near apple
+                    </p>
+                </div>
+
+                <!-- Video Item 5 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/rt1_seen_open_middle_drawer.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+                        open middle drawer
+                    </p>
+                </div>
+            </div>
+
+            <h4>Un-Seen Tasks Results on RT-1 dataset</h4>
+
+            <div class="video-container">
+                <!-- Video Item 1 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/rt1_unseen_place_green_rice_chip_bag_into_top_drawer.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+                        place green rice chip bag into top drawer
+                    </p>
+                </div>
+
+                <!-- Video Item 2 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/rt1_unseen_move 7up can near orange can.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+                        move 7up can near orange can
+                    </p>
+                </div>
+
+                <!-- Video Item 3 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/rt1_unseen_move_sponge_near_pepsi_can.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+                        move sponge near pepsi can
+                    </p>
+                </div>
+
+                <!-- Video Item 4 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/rt1_unseen_pick_water_bottle_from_middle_shelf_of_fridge.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+                        pick water bottle from middle shelf of fridge
+                    </p>
+                </div>
+
+                <!-- Video Item 5 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/rt1_unseen_place_green_jalapeno_chip_bag_into_bottom_drawer.mp4"
+                            type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+                        place green jalapeno chip bag into bottom drawer
+                    </p>
+                </div>
+            </div>
+
+            <h3>Robo-Imagine on Bridge dataset</h3>
+
+            <p>
+                We evaluate our model on the Bridge dataset, which contains 513 robotic manipulation videos with
+                different embodiments and tasks.
+            </p>
+
+            <h4>Seen Tasks Results on Bridge dataset </h4>
+
+            <div class="video-container">
+                <!-- Video Item 1 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="video1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+
+                    </p>
+                </div>
+
+                <!-- Video Item 2 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="video1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+
+                    </p>
+                </div>
+
+                <!-- Video Item 3 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="video1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+
+                    </p>
+                </div>
+
+                <!-- Video Item 4 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="video1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+
+                    </p>
+                </div>
+
+                <!-- Video Item 5 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="video1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+
+                    </p>
+                </div>
+            </div>
+
+            <h4>Un-Seen Tasks Results on Bridge dataset</h4>
+
+            <div class="video-container">
+                <!-- Video Item 1 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="video1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+
+                    </p>
+                </div>
+
+                <!-- Video Item 2 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="video1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+
+                    </p>
+                </div>
+
+                <!-- Video Item 3 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="video1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+
+                    </p>
+                </div>
+
+                <!-- Video Item 4 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="video1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+
+                    </p>
+                </div>
+
+                <!-- Video Item 5 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="video1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+
+                    </p>
                 </div>
             </div>
         </div>
 
         <div class="section">
-            <h2>Novel View Synthesis from Unposed Images</h2>
-            <hr>
+            <div class="grid-container">
+                <!-- Image (a) -->
+                <div class="grid-item">
+                    <figure style="text-align: center;">
+                        <img src="img/bridge_pie.png" style="width: 70%; display: block; margin: auto;" alt="Image 1">
+                        <figcaption>(a)</figcaption>
+                    </figure>
+                </div>
+                <!-- Image (b) -->
+                <div class="grid-item">
+                    <figure style="text-align: center;">
+                        <img src="img/bridge_radar.png" style="width: 70%; display: block; margin: auto;" alt="Image 2">
+                        <figcaption>(b)</figcaption>
+                    </figure>
+                </div>
+                <!-- Image (c) -->
+                <div class="grid-item">
+                    <figure style="text-align: center;">
+                        <img src="img/rt1_pie.png" style="width: 70%; display: block; margin: auto;" alt="Image 3">
+                        <figcaption>(c)</figcaption>
+                    </figure>
+                </div>
+                <!-- Image (d) -->
+                <div class="grid-item">
+                    <figure style="text-align: center;">
+                        <img src="img/rt1_radar.png" style="width: 70%; display: block; margin: auto;" alt="Image 4">
+                        <figcaption>(d)</figcaption>
+                    </figure>
+                </div>
+            </div>
+            <p class="caption">
+            <p style="text-align: center;">
+                <b>Experimental results of Robo-Imagine generalization ability.</b>
             <p>
-                Finally, we illustrate how approach can render novel views from images we obtained from the internet
-                without relative pose.
+                (a) the distribution of 599 tasks across 6 major categories from RT-1 test dataset.
+            </p>
+            <p>
+                (b) the success rates of 6 major categories of tasks from RT-1 test dataset.
+            </p>
+            <p>
+                (c) the distribution of 513 tasks across 10 major categories from Bridge test dataset.
+            </p>
+            <p>
+                (d) the success rates of 10 major categories from Bridge test dataset.
+            </p>
             </p>
         </div>
-        <div class="row align-items-center">
-            <div class="col justify-content-center text-center">
-                <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
-                    <source src="img/Unposed_2.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Paper</h2>
-            <hr>
-            <div>
-                <div class="list-group">
-                    <a href="https://openreview.net/pdf?id=U2yf6ZGSHb" class="list-group-item">
-                        <img src="img/paper_thumbnail.png" style="width:100%; margin-right:-20px; margin-top:-10px;">
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <hr>
-
     </div>
+
+    <div class="section">
+        <h2>Paper</h2>
+        <hr>
+        <div>
+            <div class="list-group">
+                <a href="https://openreview.net/pdf?id=U2yf6ZGSHb" class="list-group-item">
+                    <img src="img/paper_thumbnail.png" style="width:100%; margin-right:-20px; margin-top:-10px;">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
