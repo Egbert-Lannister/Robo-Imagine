@@ -281,57 +281,58 @@
                 <!-- Video Item 1 -->
                 <div class="video-item">
                     <video controls autoplay muted loop>
-                        <source src="img/bridge_unseen_move_the_corn_cob_to_the_edge_of_the_counter-1-T.mp4"
-                            type="video/mp4">
+                        <source src="img/bridge_unseen_close_cabinet.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p class="video-description">
-                        move the corn cob to the edge of the counter
+                        close cabinet
                     </p>
                 </div>
 
                 <!-- Video Item 2 -->
                 <div class="video-item">
                     <video controls autoplay muted loop>
-                        <source src="img/bridge_unseen_pick_up_the_pan_and_place_it_behind_the_blue_cloth.mp4"
+                        <source
+                            src="img/bridge_unseen_grab_the_bell_pepper_outside_of_the_pot_and_place_it_towards_the_bottom_of_the_table_to_the_right_side_of_the_yellow_towel.mp4"
                             type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p class="video-description">
-                        pick up the pan and place it behind the blue cloth
+                        grab the bell pepper outside of the pot and place it towards the bottom of the table to the
+                        right side of the yellow towel
                     </p>
                 </div>
 
                 <!-- Video Item 3 -->
                 <div class="video-item">
                     <video controls autoplay muted loop>
-                        <source src="img/bridge_unseen_place the mushroom above the silver pot.mp4" type="video/mp4">
+                        <source src="img/bridge_unseen_move_the_pot_to_the_left_edge_of_the_table.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p class="video-description">
-                        place the mushroom above the silver pot
+                        move the pot to the left edge of the table
                     </p>
                 </div>
 
                 <!-- Video Item 4 -->
                 <div class="video-item">
                     <video controls autoplay muted loop>
-                        <source src="img/bridge_unseen_put_pan_in_front_of_towel.mp4" type="video/mp4">
+                        <source src="img/bridge_unseen_put_knife_on_cutting_board.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p class="video-description">
-                        put pan in front of towel
+                        put knife on cutting board
                     </p>
                 </div>
 
                 <!-- Video Item 5 -->
                 <div class="video-item">
                     <video controls autoplay muted loop>
-                        <source src="img/bridge_unseen_move_the_spatula_to_corner_of_the_table.mp4" type="video/mp4">
+                        <source src="img/bridge_unseen_put_eggplant_into_pot_or_pan.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p class="video-description">
-                        move the spatula to corner of the table
+                        put eggplant into pot or pan
                     </p>
                 </div>
             </div>
@@ -385,7 +386,265 @@
             </p>
             </p>
         </div>
+
+        <div class="section">
+            <h2>No VLM video and Contains VLM video </h2>
+            <hr>
+            <p>
+                In our model, the Vision-Language Model (VLM) serves as a task-completion evaluator, enhancing the
+                quality of generated videos by ensuring alignment with task requirements over extended temporal
+                horizons.
+                Comparative results between the VLM and No-VLM configurations demonstrate that incorporating
+                the VLM module significantly improves video generation quality, providing greater adherence to task
+                goals than models without the VLM module.
+            </p>
+
+            <div class="video-container">
+
+
+                <div class="video-item">
+                    <br><br>
+                    <p class="video-description">
+                        <b>No-VLM</b>
+                    </p>
+                    </video>
+                </div>
+
+                <!-- Video Item 1 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/vlm_0000000_sample0_noVLM.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+                        place the blue cup over the black cup
+                    </p>
+                </div>
+
+                <!-- Video Item 2 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/vlm_0000007_sample0_noVLM.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+                        place the cloth from the red bowl in the grey bowl
+                    </p>
+                </div>
+
+                <!-- Video Item 3 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/vlm_0000015_sample0_noVLM.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+                        move the cloth on the table
+                    </p>
+                </div>
+
+                <!-- Video Item 4 -->
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/vlm_0000029_sample0_noVLM.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+                        pick up the bottle and put it in the pot
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="video-container">
+
+                <div class="video-item">
+                    <br><br>
+                    <p class="video-description">
+                        <b>Contains VLM</b>
+                    </p>
+                    </video>
+                </div>
+
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/vlm_0000000_sample0.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+
+                    </p>
+                </div>
+
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/vlm_0000007_sample0.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+
+                    </p>
+                </div>
+
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/vlm_0000015_sample0.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+
+                    </p>
+                </div>
+
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/vlm_0000029_sample0.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Simulation Experiment Video</h2>
+            <hr>
+            <p>
+                We provide a simulation experiment video to show the performance of our model in simulation.
+            </p>
+
+            <div class="video-container">
+
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/sim_origin_coke.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+
+                    </p>
+                </div>
+
+
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/sim_desk1_coke.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+
+                    </p>
+                </div>
+
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/sim_desk2_coke.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+
+                    </p>
+                </div>
+
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/sim_background1_coke.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+
+                    </p>
+                </div>
+
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/sim_pick_apple.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section">
+            <h2>Real Machine Experiment</h2>
+            <hr>
+            <p>
+                The model was further deployed on Window-X and RT-1 robotic arms, where corresponding experiments were
+                conducted in
+                real-world scenarios.
+                These experiments demonstrated satisfactory performance, aligning closely with expected outcomes and
+                validating the model's practical applicability.
+            </p>
+
+            <div class="video-container">
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/real_bridge_move_orange_near_apple.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+                        move orange near apple
+                    </p>
+                </div>
+
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/real_move carrot to drying rack.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+                        move carrot to drying rack
+                    </p>
+                </div>
+
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/real_pick_orange.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+                        pick orange
+                    </p>
+                </div>
+
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/real_put_orange_on_plate.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+                        put orange on plate
+                    </p>
+                </div>
+
+                <div class="video-item">
+                    <video controls autoplay muted loop>
+                        <source src="img/real_rt1_pick_apple.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-description">
+                        pick apple
+                    </p>
+                </div>
+            </div>
+            <p>
+                Real experimental results demonstrate that the Robo-Imagine model exhibits remarkable generalization
+                capabilities in real-world applications.
+                Under diverse scenarios, across different robotic arms, and
+                with varying task instructions, the model consistently performs tasks effectively, showcasing its robust
+                adaptability across environments and embodiments.
+            </p>
+
+
+        </div>
     </div>
+
 
     <div class="section">
         <h2>Paper</h2>
