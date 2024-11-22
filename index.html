@@ -507,11 +507,16 @@
             <h2>Generalization in unseen simulation environment</h2>
             <hr>
             <p>
+                To further assess video generation capability, we first evaluated our model with RT-1 tasks in
+                simulation environment. This environment was customized and configured as RT-1 dataset, where items were
+                randomly placed on drawers. With task prompts different from those used in the RT-1 dataset, the model
+                demonstrated robust tasks and environments generalization, resulting in accurately picking up the apple
+                and lying coke can, as shown in video below.
                 To test the model's generalization capability furthermore, we created four distinct scenarios in the
                 simulation environment. These scenarios varied in backgrounds, desktop categories, desktop texture,
-                random coke can poses and spacial configurations. As video shown, in each case,
-                the robot successfully completed the assigned tasks, pick up coke can stably, further affirming the
-                model's adaptability and robustness.
+                random coke can poses and spacial configurations. As video shown, in each case, the robot successfully
+                completed the assigned tasks, pick up coke can stably, further affirming the model's adaptability and
+                robustness.
             </p>
 
             <div class="video-container">
@@ -559,7 +564,7 @@
 
                 <div class="video-item">
                     <video controls autoplay muted loop>
-                        <source src="img/sim_pick_apple.mp4" type="video/mp4">
+                        <source src="img/sim_background2_coke.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p class="video-description">
