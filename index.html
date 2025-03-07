@@ -16,6 +16,8 @@
     <!-- Custom styles for this template -->
     <link href="offcanvas.css" rel="stylesheet">
     <!--    <link rel="icon" href="img/favicon.gif" type="image/gif">-->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -31,24 +33,20 @@
             <h2>Abstract</h2>
             <p>
                 Robot learning aims to control robots to complete tasks across diverse physical embodiments and
-                environments.
-                Mainstream approaches tend to train an end-to-end robot model trained on image-text-encoding of states,
-                which achieve good task-specific performances, but struggle on unseen scenes and tasks.
-                Recently, video generation models provide a new perspective to enable robots to generalize by using
-                videos as an 'imagination' of future actions.
-                However, the current approach trains a video model on a specific embodiment and specific task, showing
-                poor generalization.
-                In this paper, we train a generalized robotic video generation model, named Robo-Imagine, conditioned
-                with image and text, to generate visual-semantic-conformity robotic manipulation videos across variant
-                embodiments, backgrounds and tasks.
-                Our method able to effectively generalize and generate robotic videos on unseen cases, even enabling us
-                to transfer a model trained on real-world video and directly solve tasks in simulation environment.
-                We enable generating longer videos by applying this model autoregressively using a VLM as
-                task-completion evaluator.Furthermore, we train a visual inverse dynamic model to map the generated
-                videos into end-effector actions.
-                We illustrate that the efficiency of our approach across embodiments and environments and plan to
-                open-source our model on paper acceptance.
-
+                environments. Mainstream approaches tend to train an end-to-end robot model trained on
+                image-text-encoding of states, which achieve good task-specific performance, but struggle on unseen
+                scenes and tasks. Recently, video generation models provide a new perspective to enable robots to
+                generalize by using video generation as an 'imagination' of future actions. However, the current
+                approach trains a video model on a specific embodiment and specific task, showing poor generalization.
+                In this paper, we train a generalized robotic video generation model, named \textbf{Robo-Imagine},
+                conditioned with image, text, and embodiment assign, to generate visual-semantic-dynamic conformity
+                robotic manipulation videos across variant embodiments, backgrounds, and tasks. Our method is able to
+                effectively generalize and generate robotic videos on unseen cases, even enabling us to transfer a model
+                trained on real-world video and directly solve tasks in simulation environment. We enable generating
+                longer videos by applying this model autoregressively using a VLM as task-completion evaluator. Further,
+                we train a visual inverse dynamic model to map the generated videos into end-effector actions. We
+                illustrate the efficiency of our approach across embodiments and environments and plan to open-source
+                our model on paper acceptance.
             </p>
         </div>
 
@@ -69,13 +67,17 @@
             <img src="img/framework.png" style="width: 100%; display: block; margin: auto;"
                 alt="Framework of our Robot-Imagine model" />
             <p>
-                Robot-Imagine is a U-Net-based diffusion video generation model, with text instruction and initial image
-                as inputs and outputs generated robotic manipulation videos.
-                We employ a VLM as task-completion evaluator to generate long-content video.
-                If VLM feedbacks that task is deemed incomplete, the model continues generating video until the task is
-                fulfilled.
-                Then the visual inverse dynamic model map the generated guiding video into robot arm 7-DoF actions for
-                task in simulation or real world.
+                Robot-Imagine is a U-Net-based diffusion video generation model. Inputs: text instruction, embodiment
+                specification, 3 condition images (\(O_{i}, O_{j}, O_{k}\),
+                where \((i, j, k) \sim \mathrm{Uniform}\{(a, b, c) \mid 0 \leq a \leq b \leq c \leq n\}\), \(n\) is
+                video length. (\(O_{i}, O_{j}, O_{k}, i, j, k\)) represent visual and dynamic (motion direction and
+                speed)
+                condition of task, in order to generate coherent and smooth long-term video, when utilizing VLM as
+                task-complete evaluator for autoregressive video generation). Output: generated robotic manipulation
+                video. We employ a VLM as task-completion evaluator to generate long-content video. If VLM feedbacks
+                that task is incomplete, Robot-Imagine continues generating video until task is fulfilled. Then the
+                visual inverse dynamic model map the generated guiding video into robot arm 7-DoF actions for task in
+                simulation or real world.
             </p>
         </div>
 
@@ -90,11 +92,11 @@
                 different embodiments and tasks.
             </p>
 
-            <!-- <h4>Seen Tasks Results on RT-1 dataset</h4> -->
+            <h4>Seen Tasks Results on RT-1 dataset</h4>
 
-            <!-- <div class="video-container"> -->
-            <!-- Video Item 1 -->
-            <!-- <div class="video-item">
+            <div class="video-container">
+                <!-- Video Item 1 -->
+                <div class="video-item">
                     <video controls autoplay muted loop>
                         <source src="img/rt1_seen_pick_rxbar_chocolate.mp4" type="video/mp4">
                         Your browser does not support the video tag.
@@ -102,10 +104,10 @@
                     <p class="video-description">
                         pick rxbar chocolate
                     </p>
-                </div> -->
+                </div>
 
-            <!-- Video Item 2 -->
-            <!-- <div class="video-item">
+                <!-- Video Item 2 -->
+                <div class="video-item">
                     <video controls autoplay muted loop>
                         <source src="img/rt1_seen_close_top_drawer.mp4" type="video/mp4">
                         Your browser does not support the video tag.
@@ -113,10 +115,10 @@
                     <p class="video-description">
                         close top drawer
                     </p>
-                </div> -->
+                </div>
 
-            <!-- Video Item 3 -->
-            <!-- <div class="video-item">
+                <!-- Video Item 3 -->
+                <div class="video-item">
                     <video controls autoplay muted loop>
                         <source src="img/rt1_seen_knock_water_bottle_over.mp4" type="video/mp4">
                         Your browser does not support the video tag.
@@ -124,10 +126,10 @@
                     <p class="video-description">
                         knock water bottle over
                     </p>
-                </div> -->
+                </div>
 
-            <!-- Video Item 4 -->
-            <!-- <div class="video-item">
+                <!-- Video Item 4 -->
+                <div class="video-item">
                     <video controls autoplay muted loop>
                         <source src="img/rt1_seen_move_sponge_near_apple.mp4" type="video/mp4">
                         Your browser does not support the video tag.
@@ -135,10 +137,10 @@
                     <p class="video-description">
                         move sponge near apple
                     </p>
-                </div> -->
+                </div>
 
-            <!-- Video Item 5 -->
-            <!-- <div class="video-item">
+                <!-- Video Item 5 -->
+                <div class="video-item">
                     <video controls autoplay muted loop>
                         <source src="img/rt1_seen_open_middle_drawer.mp4" type="video/mp4">
                         Your browser does not support the video tag.
@@ -146,10 +148,10 @@
                     <p class="video-description">
                         open middle drawer
                     </p>
-                </div> -->
-            <!-- </div> -->
+                </div>
+            </div>
 
-            <!-- <h4>Un-Seen Tasks Results on RT-1 dataset</h4> -->
+            <h4>Un-Seen Tasks Results on RT-1 dataset</h4>
 
             <div class="video-container">
                 <!-- Video Item 1 -->
@@ -216,11 +218,11 @@
                 different embodiments and tasks.
             </p>
 
-            <!-- <h4>Seen Tasks Results on Bridge dataset </h4> -->
+            <h4>Seen Tasks Results on Bridge dataset </h4>
 
-            <!-- <div class="video-container"> -->
-            <!-- Video Item 1 -->
-            <!-- <div class="video-item">
+            <div class="video-container">
+                <!-- Video Item 1 -->
+                <div class="video-item">
                     <video controls autoplay muted loop>
                         <source src="img/bridge_seen_close_fridge.mp4" type="video/mp4">
                         Your browser does not support the video tag.
@@ -228,10 +230,10 @@
                     <p class="video-description">
                         close fridge
                     </p>
-                </div> -->
+                </div>
 
-            <!-- Video Item 2 -->
-            <!-- <div class="video-item">
+                <!-- Video Item 2 -->
+                <div class="video-item">
                     <video controls autoplay muted loop>
                         <source src="img/bridge_seen_flip_pot_upright_in_sink_distractors.mp4" type="video/mp4">
                         Your browser does not support the video tag.
@@ -239,10 +241,10 @@
                     <p class="video-description">
                         flip pot upright in sink (distractors)
                     </p>
-                </div> -->
+                </div>
 
-            <!-- Video Item 3 -->
-            <!-- <div class="video-item">
+                <!-- Video Item 3 -->
+                <div class="video-item">
                     <video controls autoplay muted loop>
                         <source src="img/bridge_seen_open_microwave.mp4" type="video/mp4">
                         Your browser does not support the video tag.
@@ -250,10 +252,10 @@
                     <p class="video-description">
                         open microwave
                     </p>
-                </div> -->
+                </div>
 
-            <!-- Video Item 4 -->
-            <!-- <div class="video-item">
+                <!-- Video Item 4 -->
+                <div class="video-item">
                     <video controls autoplay muted loop>
                         <source src="img/bridge_seen_put_knife_on_cutting_board.mp4" type="video/mp4">
                         Your browser does not support the video tag.
@@ -261,10 +263,10 @@
                     <p class="video-description">
                         put knife on cutting board
                     </p>
-                </div> -->
+                </div>
 
-            <!-- Video Item 5 -->
-            <!-- <div class="video-item">
+                <!-- Video Item 5 -->
+                <div class="video-item">
                     <video controls autoplay muted loop>
                         <source src="img/bridge_seen_take_sushi_off_plate.mp4" type="video/mp4">
                         Your browser does not support the video tag.
@@ -273,9 +275,9 @@
                         take sushi off plate
                     </p>
                 </div>
-            </div> -->
+            </div>
 
-            <!-- <h4>Un-Seen Tasks Results on Bridge dataset</h4> -->
+            <h4>Un-Seen Tasks Results on Bridge dataset</h4>
 
             <div class="video-container">
                 <!-- Video Item 1 -->
@@ -373,12 +375,10 @@
             </div>
             <p class="caption">
             <p>
-                The experimental results for the Robo-Imagine model are summarized as follows:
-                Figure (a) illustrates the distribution of 599 tasks across six primary categories in the RT-1 test
-                dataset, while Figure (b) presents the success rates of these six categories. Figure (c) shows the
-                distribution of 513 tasks across ten primary categories in the Bridge test dataset, and Figure (d)
-                depicts the success rates of these ten categories. These results are used to assess the generalization
-                ability of the Robo-Imagine model across different datasets and task types.
+                (a) the distribution of 599 tasks across 6 major categories from RT-1 test dataset. <br>
+                (b) the success rates of 6 major categories of tasks from RT-1 test dataset. <br>
+                (c) the distribution of 513 tasks across 10 major categories from Bridge test dataset. <br>
+                (d) the success rates of 10 major categories from Bridge test dataset.
             </p>
             </p>
         </div>
