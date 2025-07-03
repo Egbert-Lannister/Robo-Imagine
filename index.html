@@ -35,21 +35,20 @@
         <div class="section">
             <h2>Abstract</h2>
             <p>
-                Robot learning aims to control robots to complete tasks across diverse physical embodiments and
-                environments. Mainstream approaches tend to train an end-to-end robot model trained on
-                image-text-encoding of states, which achieve good task-specific performance, but struggle on unseen
-                scenes and tasks. Recently, video generation models provide a new perspective to enable robots to
-                generalize by using video generation as an 'imagination' of future actions. However, the current
-                approach trains a video model on a specific embodiment and specific task, showing poor generalization.
-                In this paper, we train a generalized robotic video generation model, named \textbf{Robo-Imagine},
-                conditioned with image, text, and embodiment assign, to generate visual-semantic-dynamic conformity
-                robotic manipulation videos across variant embodiments, backgrounds, and tasks. Our method is able to
-                effectively generalize and generate robotic videos on unseen cases, even enabling us to transfer a model
-                trained on real-world video and directly solve tasks in simulation environment. We enable generating
-                longer videos by applying this model autoregressively using a VLM as task-completion evaluator. Further,
-                we train a visual inverse dynamic model to map the generated videos into end-effector actions. We
-                illustrate the efficiency of our approach across embodiments and environments and plan to open-source
-                our model on paper acceptance.
+                Robot learning aims to complete diverse tasks. End-to-end VLA models, achieving significant performance,
+                but struggling on data dependency. Recently, video generation models (VGMs) as a world model provides a
+                new perspective, enabling robots to generalize across tasks by 'imagining' future states.
+                However, computing bottleneck leading to limited-length video, not applicable for long-term tasks.
+                In this paper, we train a image-text conditioned robotic video generation model, named
+                <b>RoboImagine</b>, aiming to generate long-term robotic manipulation videos, with
+                visual-semantic-dynamic conformity.
+                We build an autoregressive long-term video generation pipeline based on a VLM as task-complete-verifier,
+                in which RoboImagine is designed with dynamic and geometric consistency augmentation to get continuous
+                and smooth motions between clips.
+                Systematic experiments are implemented, showing that we are able to generate longe-term robotic
+                manipulation videos with continuous motion, achieveing average success rate increment of 150% than that
+                of w/o augmentation method. Our method effectively generalize on unseen cases. The generated video is
+                mapped into end-effector actions, through a visual inverse dynamic model.
             </p>
         </div>
 
