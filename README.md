@@ -1,8 +1,10 @@
 # Robo-Imagine: An Image-Text Conditioned, Generalized Robotic Video Generation Model Across Embodiments and Tasks
 
-[![Project Page](https://img.shields.io/badge/Project-Page-green)](https://your-project-page.com)
+[![Project Page](https://img.shields.io/badge/Project-Page-green)](https://github.com/Egbert-Lannister/Robo-Imagine)
 [![Paper](https://img.shields.io/badge/Paper-arXiv-red)](https://arxiv.org/abs/your-paper-id)
-[![Demo](https://img.shields.io/badge/Demo-Videos-blue)](https://your-demo-link.com)
+[![Demo](https://img.shields.io/badge/Demo-Videos-blue)](https://egbert-lannister.github.io/Robo-Imagine/)
+
+<!-- > **English** | [中文](README_zh.md) -->
 
 ## 🚀 Code Coming Soon!
 
@@ -144,7 +146,7 @@ If you find this work useful, please cite our paper:
 ## 📞 Contact
 
 For questions and inquiries, please contact:
-- **Email**: [your-email@domain.com]
+- **Email**: [egbertlannister@gmail.com]
 - **Issues**: Please use GitHub Issues for technical questions (available when code is released)
 
 ## 📝 License
