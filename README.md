@@ -3,6 +3,7 @@
 [![Project Page](https://img.shields.io/badge/Project-Page-green)](https://github.com/Egbert-Lannister/Robo-Imagine)
 [![Paper](https://img.shields.io/badge/Paper-arXiv-red)](https://arxiv.org/abs/your-paper-id)
 [![Demo](https://img.shields.io/badge/Demo-Videos-blue)](https://egbert-lannister.github.io/Robo-Imagine/)
+[![ModelScope](https://img.shields.io/badge/ModelScope-Link-orange)](https://modelscope.cn/)
 
 <!-- > **English** | [中文](README_zh.md) -->
 
