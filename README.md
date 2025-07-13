@@ -1,30 +1,21 @@
-# Robo-Imagine: An Image-Text Conditioned, Generalized Robotic Video Generation Model Across Embodiments and Tasks
+# RoboImagine: An Image-Text Conditioned, Generalized Robotic Video Generation Model Across Embodiments and Tasks
 
 [![Project Page](https://img.shields.io/badge/Project-Page-green)](https://github.com/Egbert-Lannister/Robo-Imagine)
 [![Paper](https://img.shields.io/badge/Paper-arXiv-red)](https://arxiv.org/abs/your-paper-id)
 [![Demo](https://img.shields.io/badge/Demo-Videos-blue)](https://egbert-lannister.github.io/Robo-Imagine/)
 [![ModelScope](https://img.shields.io/badge/ModelScope-Link-orange)](https://modelscope.cn/)
 
-<!-- > **English** | [中文](README_zh.md) -->
+## 🚀 Project Overview
 
-## 🚀 Code Coming Soon!
+**RoboImagine** is an image-text conditioned diffusion model that generates long-term robotic manipulation videos, supporting multiple robot embodiments (robotic arms, mobile robots, etc.). The model achieves continuous and smooth long video generation through dynamic consistency enhancement techniques and integrates a VLM as a task completion verifier.
 
-**⚠️ Important Notice: The source code for this project is currently under preparation and will be released soon. Stay tuned for updates!**
+### 🔥 Core Innovations
 
-We are working hard to clean up the code, add comprehensive documentation, and ensure reproducibility. The complete implementation including:
-- Model training scripts
-- Inference pipelines
-- Data preprocessing tools
-- Evaluation metrics
-- Pre-trained model weights
+- **Input**: Text instruction + Robot type specification + 3 condition images
+- **Output**: Long-term robotic manipulation videos (16 frames, extendable via autoregression)
+- **Technology**: U-Net diffusion architecture + Dynamic consistency enhancement + VLM task verifier
 
-**Will be available in the coming weeks.** Please star this repository to get notified when the code is released!
-
-## 📖 Abstract
-
-Robot learning aims to complete diverse tasks. End-to-end VLA models, achieving significant performance, but struggling on data dependency. Recently, video generation models (VGMs) as a world model provides a new perspective, enabling robots to generalize across tasks by 'imagining' future states. However, computing bottleneck leading to limited-length video, not applicable for long-term tasks. In this paper, we train a image-text conditioned robotic video generation model, named **RoboImagine**, aiming to generate long-term robotic manipulation videos, with visual-semantic-dynamic conformity. We build an autoregressive long-term video generation pipeline based on a VLM as task-complete-verifier, in which RoboImagine is designed with dynamic and geometric consistency augmentation to get continuous and smooth motions between clips. Systematic experiments are implemented, showing that we are able to generate longe-term robotic manipulation videos with continuous motion, achieveing average success rate increment of 150% than that of w/o augmentation method. Our method effectively generalize on unseen cases. The generated video is mapped into end-effector actions, through a visual inverse dynamic model.
-
-## 🎯 Key Features
+### 🎯 Key Features
 
 - **Image-Text Conditioned Generation**: Generate robotic videos conditioned on both visual inputs and text instructions
 - **Cross-Embodiment Generalization**: Works across different robot embodiments and manipulation tasks
@@ -32,106 +23,265 @@ Robot learning aims to complete diverse tasks. End-to-end VLA models, achieving 
 - **VLM-Enhanced Quality**: Vision-Language Model as task-completion evaluator
 - **Dynamic Consistency**: Advanced augmentation techniques for smooth and continuous motions
 
-## 🏗️ Framework
+### 🏗️ Framework Architecture
 
 ![Framework](img/framework.png)
 
-Robot-Imagine is a U-Net-based diffusion video generation model that takes:
-- **Input**: Text instruction, embodiment specification, 3 condition images
-- **Output**: Generated robotic manipulation video
-- **Enhancement**: VLM as task-completion evaluator for autoregressive generation
+RoboImagine is based on U-Net diffusion model architecture:
+- **Encoder**: OpenCLIP text encoder + image encoder
+- **Diffusion Model**: 3D U-Net for spatiotemporal processing
+- **Decoder**: VAE for video frame reconstruction
+- **Conditioning Mechanism**: Hybrid conditioning (text+image) + Image concatenation conditioning
 
-## 📊 Results
+### 📊 Performance Highlights
 
-### Performance Highlights
-- **150% average success rate improvement** compared to methods without augmentation
-- Effective generalization on unseen tasks and environments
-- Successful evaluation on both RT-1 and Bridge datasets
+- **150% Average Success Rate Improvement**: Compared to methods without augmentation
+- **Effective Generalization**: Excellent performance on unseen tasks and environments
+- **Dual Dataset Validation**: Successfully evaluated on both RT-1 and Bridge datasets
 
-### Datasets Evaluated
-- **RT-1 Dataset**: 599 robotic manipulation videos with different embodiments and tasks
-- **Bridge Dataset**: 513 robotic manipulation videos with various manipulation scenarios
+## 🛠️ Environment Setup
 
-## 🎬 Demo Videos
+### Basic Dependencies
 
-Our model demonstrates impressive performance across various manipulation tasks:
+- Python 3.8+
+- PyTorch 2.0+
+- CUDA 11.0+
 
-### RT-1 Dataset Results
+### Detailed Installation Steps
+
+```bash
+# 1. Create conda environment
+conda create -n roboimagine python=3.8
+conda activate roboimagine
+
+# 2. Clone repository (originmodel branch)
+git clone https://github.com/Egbert-Lannister/Robo-Imagine.git
+cd Robo-Imagine
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# Core dependencies include:
+# - torch==2.0.0
+# - torchvision
+# - transformers==4.25.1
+# - open_clip_torch==2.22.0
+# - pytorch_lightning==1.9.3
+# - opencv_python
+# - decord==0.6.0
+# - xformers
+# - einops==0.3.0
+```
+
+## 🚀 Quick Start
+
+### Pre-trained Model Download
+
+Our model is based on the DynamiCrafter pre-trained model with fine-tuning and architectural modifications for robotic video generation.
+
+```bash
+# Download DynamiCrafter pre-trained model
+# Create checkpoints directory
+mkdir -p checkpoints
+
+# Download from Hugging Face
+# Visit: https://huggingface.co/Doubiiu/DynamiCrafter_512/tree/main
+# Download the model files to checkpoints/ directory
+
+# Or use git lfs (if you have git-lfs installed)
+cd checkpoints
+git lfs clone https://huggingface.co/Doubiiu/DynamiCrafter_512
+
+# The model should be placed at:
+# checkpoints/DynamiCrafter_512/model.ckpt
+```
+
+**Model Details:**
+- **Base Model**: DynamiCrafter (512×320 resolution)
+- **Our Modifications**: Fine-tuned on robotic datasets (RT-1, Bridge, UR5) with architectural enhancements
+- **Key Changes**: Dynamic consistency augmentation, VLM integration, cross-embodiment conditioning
+
+### Single Video Inference
+
+```python
+# Inference example (Python API)
+import sys
+sys.path.insert(0, '.')
+from scripts.evaluation.inference import *
+
+# Load model
+config = OmegaConf.load("configs/inference_512_v1.0.yaml")
+model = load_model_checkpoint(model, "path/to/checkpoint.ckpt")
+
+# Prepare input
+# Note: Input image size must be 512x320, otherwise output will have black borders
+text_instruction = "open the microwave"
+condition_images = [img1, img2, img3]  # 3 condition images
+
+# Generate video
+video = model.generate(
+    text_instruction=text_instruction,
+    condition_images=condition_images,
+    embodiment="bridge"  # Supported: bridge, rt1, ur5
+)
+```
+
+### Batch Inference
+
+```bash
+# Modify the three key paths in the script:
+# 1. ckpt: Point to the downloaded checkpoint file
+# 2. prompt_dir: Input images and prompt text directory
+# 3. res_dir: Output video save directory
+
+# Run inference (512 resolution)
+sh scripts/run.sh 512
+
+# Input data format
+# prompt_dir/
+# ├── image1.jpg    # Condition images
+# ├── image2.jpg
+# ├── image3.jpg
+# └── prompts.txt   # One text instruction per line
+```
+
+### Demo Results
+
+#### RT-1 Dataset Results
 - ✅ Pick and place operations
 - ✅ Drawer manipulation (open/close)
 - ✅ Object movement and positioning
 - ✅ Container manipulation
 
-### Bridge Dataset Results
+#### Bridge Dataset Results
 - ✅ Kitchen appliance operation (fridge, microwave)
 - ✅ Tool manipulation (knife, cutting board)
 - ✅ Complex multi-step tasks
 - ✅ Object arrangement and organization
 
-### VLM vs No-VLM Comparison
-Our VLM-enabled approach shows significant improvements in:
-- Task completion accuracy
-- Video quality and coherence
-- Long-term temporal consistency
+## 🔧 Model Training
 
-## 🛠️ Installation
+### Dataset Preparation
 
-**Coming Soon!** Installation instructions will be provided when the code is released.
+#### Supported Datasets
+- **RT-1**: 599 robotic manipulation videos
+- **Bridge**: 513 robotic manipulation videos
+- **berkeley_autolab_ur5**: UR5 robotic arm data
+
+#### Data Format
+```csv
+# RT1-UR5-Bridge_train.csv example
+video_path,text_instruction,embodiment
+/data/bridge/fridge_open.mp4,"open the fridge","bridge"
+/data/rt1/drawer_close.mp4,"close the drawer","rt1"
+/data/ur5/pick_apple.mp4,"pick up the apple","ur5"
+```
+
+#### Image Preprocessing
+- **Important Notice**: Input images must be resized to **512×320** resolution
+- Otherwise, the model output videos will have black border issues
+- Data loader will automatically perform center cropping and normalization
+
+### Start Training
 
 ```bash
-# This will be available soon
-git clone https://github.com/your-username/Robo-Imagine.git
-cd Robo-Imagine
-pip install -r requirements.txt
+# Modify training configuration
+# configs/training_512_v1.0/config.yaml key parameters:
+# - frame_stride: 2  # Core modification in originmodel branch
+# - resolution: [320, 512]  # Height×Width
+# - video_length: 16
+# - meta_path: /path/to/RT1-UR5-Bridge_train.csv
+
+# Start training
+sh configs/training_512_v1.0/run.sh
+
+# Training parameter explanation:
+# - batch_size: 2
+# - learning_rate: 1e-5
+# - max_steps: 100000
+# - checkpoint_every: 5000 steps
+# - Pre-trained model: Based on DynamiCrafter
 ```
 
-## 🚀 Quick Start
+### Checkpoint Management
 
-**Coming Soon!** Usage examples will be provided with the code release.
-
-```python
-# Example usage (coming soon)
-from robo_imagine import RoboImagineModel
-
-# Initialize model
-model = RoboImagineModel.from_pretrained("path/to/model")
-
-# Generate robotic video
-video = model.generate(
-    text_instruction="pick up the apple",
-    condition_images=[img1, img2, img3],
-    embodiment="robot_arm"
-)
+```bash
+# Training checkpoint save path
+checkpoints/
+├── dynamicrafter_512_v1/model.ckpt  # Pre-trained model
+└── training_512_v1.0/
+    ├── epoch_174-step_18000.ckpt    # Training checkpoint
+    └── trainstep_checkpoints/
 ```
 
-## 📋 Requirements
+## 📁 Code Structure
 
-**Coming Soon!** Detailed requirements will be provided with the code release.
+```
+RoboImagine/
+├── configs/                    # Configuration files
+│   ├── inference_512_v1.0.yaml # Inference configuration
+│   └── training_512_v1.0/      # Training configuration
+│       ├── config.yaml         # Main configuration file
+│       └── run.sh              # Training script
+├── lvdm/                       # Core model code
+│   ├── models/
+│   │   ├── ddpm3d.py          # Diffusion model backbone
+│   │   ├── autoencoder.py     # VAE encoder
+│   │   └── samplers/          # Samplers
+│   ├── modules/
+│   │   ├── encoders/
+│   │   │   ├── condition.py   # Condition encoder (image+text)
+│   │   │   └── resampler.py   # Image resampler
+│   │   └── networks/
+│   │       └── openaimodel3d.py # 3D U-Net
+│   └── data/
+│       └── webvid.py          # Dataset loader (supports robot types)
+├── scripts/                    # Run scripts
+│   ├── run.sh                 # Inference script
+│   └── evaluation/
+│       ├── inference.py       # Inference entry point
+│       └── funcs.py           # Utility functions
+├── main/                       # Training related
+│   ├── trainer.py             # Training entry point
+│   ├── utils_data.py          # Data processing utilities
+│   └── callbacks.py           # Training callbacks
+├── utils/                      # Utility functions
+│   ├── utils.py               # General utilities
+│   └── save_video.py          # Video saving utilities
+└── prompts/                    # Example prompts
+    ├── 512/                   # 512 resolution examples
+    └── 1024/                  # 1024 resolution examples
+```
 
-Expected requirements include:
-- Python 3.8+
-- PyTorch 2.0+
-- Transformers
-- Diffusers
-- OpenCV
-- NumPy
-- Additional robotics and vision libraries
+### Core File Descriptions
 
-## 🔬 Experimental Setup
+- **`lvdm/models/ddpm3d.py`**: Diffusion model backbone, handles spatiotemporal diffusion process
+- **`lvdm/modules/encoders/condition.py`**: Condition encoder, processes text and image conditions
+- **`lvdm/data/webvid.py`**: Dataset loader, supports robot type images and video data
+- **`scripts/evaluation/inference.py`**: Inference entry point, supports batch video generation
+- **`configs/training_512_v1.0/config.yaml`**: Training configuration file, contains all model parameters
 
-**Coming Soon!** Detailed experimental setup and reproduction instructions will be provided.
+<!-- ## 🔄 OriginModel Branch Notes
 
-## 📈 Evaluation
+The current open-source version is based on the **originmodel** branch, with key modifications:
+- Condition image sampling stride adjusted from 1 to 2 (`frame_stride=2`)
+- Improved temporal consistency of generated videos
+- Maintains compatibility with original DynamiCrafter -->
 
-**Coming Soon!** Evaluation scripts and metrics will be included in the code release.
+## 🧪 Experimental Evaluation
 
-## 🤝 Contributing
+### Dataset Evaluation
+- **RT-1 Dataset**: 599 robotic manipulation videos with different embodiments and tasks
+- **Bridge Dataset**: 513 robotic manipulation videos with various manipulation scenarios
 
-We welcome contributions! **Contributing guidelines will be available when the code is released.**
+### Performance Metrics
+- **Success Rate**: 150% improvement compared to methods without augmentation
+- **Temporal Consistency**: Significantly improved through dynamic consistency enhancement
+- **Generalization Capability**: Excellent performance on unseen tasks and environments
 
-## 📄 Citation
+## 📝 Citation & License
 
-If you find this work useful, please cite our paper:
+### Paper Citation
 
 ```bibtex
 @article{robo_imagine_2024,
@@ -142,22 +292,24 @@ If you find this work useful, please cite our paper:
 }
 ```
 
+### License
+
+This project is licensed under the **Apache License 2.0**. See the [LICENSE](LICENSE) file for details.
+
 ## 📞 Contact
 
-For questions and inquiries, please contact:
-- **Email**: [egbertlannister@gmail.com]
-- **Issues**: Please use GitHub Issues for technical questions (available when code is released)
-
-## 📝 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+- **Email**: egbertlannister@gmail.com
+- **Issues**: Please use GitHub Issues for technical questions
+- **Project Page**: https://egbert-lannister.github.io/Robo-Imagine/
 
 ## 🙏 Acknowledgments
 
-**Coming Soon!** Acknowledgments will be included in the final release.
+- Thanks to the DynamiCrafter project for providing the base model framework
+- Thanks to RT-1 and Bridge dataset contributors
+- Thanks to open-source projects like OpenCLIP and PyTorch Lightning
 
 ---
 
-**⭐ Don't forget to star this repository to stay updated on the code release!**
+**⭐ If this project is helpful to you, please give us a star!**
 
-**📧 Subscribe to our notifications or watch this repository to be notified immediately when the code becomes available.** 
+**📧 Subscribe to notifications or watch this repository for the latest updates and feature releases.** 
