@@ -22,9 +22,7 @@ We are working hard to clean up the code, add comprehensive documentation, and e
 
 ## 📖 Abstract
 
-Robot learning aims to complete diverse tasks. End-to-end VLA models achieve significant performance but struggle with data dependency. Recently, video generation models (VGMs) as world models provide a new perspective, enabling robots to generalize across tasks by 'imagining' future states. However, computing bottlenecks leading to limited-length videos are not applicable for long-term tasks.
-
-In this paper, we train an image-text conditioned robotic video generation model, named **RoboImagine**, aiming to generate long-term robotic manipulation videos with visual-semantic-dynamic conformity. We build an autoregressive long-term video generation pipeline based on a VLM as task-complete-verifier, in which RoboImagine is designed with dynamic and geometric consistency augmentation to get continuous and smooth motions between clips.
+Robot learning aims to complete diverse tasks. End-to-end VLA models, achieving significant performance, but struggling on data dependency. Recently, video generation models (VGMs) as a world model provides a new perspective, enabling robots to generalize across tasks by 'imagining' future states. However, computing bottleneck leading to limited-length video, not applicable for long-term tasks. In this paper, we train a image-text conditioned robotic video generation model, named **RoboImagine**, aiming to generate long-term robotic manipulation videos, with visual-semantic-dynamic conformity. We build an autoregressive long-term video generation pipeline based on a VLM as task-complete-verifier, in which RoboImagine is designed with dynamic and geometric consistency augmentation to get continuous and smooth motions between clips. Systematic experiments are implemented, showing that we are able to generate longe-term robotic manipulation videos with continuous motion, achieveing average success rate increment of 150% than that of w/o augmentation method. Our method effectively generalize on unseen cases. The generated video is mapped into end-effector actions, through a visual inverse dynamic model.
 
 ## 🎯 Key Features
 
@@ -152,7 +150,7 @@ For questions and inquiries, please contact:
 
 ## 📝 License
 
-**Coming Soon!** License information will be provided with the code release.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
